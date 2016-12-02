@@ -1,0 +1,16 @@
+<md-sidenav-layout [class.rezina-dark-theme]="header.isDarkTheme">
+  <header-bar #header [leftnav]=left [rightnav]=right></header-bar>
+	<!-- header componet, move it to top if you want full width when side nav shows -->
+  <breadcrumbs></breadcrumbs>
+	<md-sidenav #left mode="over">
+		<left-side-nav [leftnav]=left></left-side-nav>
+	</md-sidenav>
+
+	<md-sidenav #right align="end" mode="side">
+		<right-side-nav [rightnav]=right></right-side-nav>
+	</md-sidenav>
+  <!-- <spinner></spinner> -->
+
+	<router-outlet></router-outlet>
+</md-sidenav-layout>
+<footer-bar></footer-bar>

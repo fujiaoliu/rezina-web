@@ -1,0 +1,8 @@
+<md-toolbar>
+</md-toolbar>
+<input>
+search
+<button md-button (click)="leftnav.close()">Close</button>
+<button md-button
+(click)="leftnav.mode = (leftnav.mode == 'push' ? 'over' : (leftnav.mode == 'over' ? 'side' : 'push'))">Toggle Mode</button>
+<div>Mode: {{leftnav.mode}}</div>

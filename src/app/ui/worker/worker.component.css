@@ -1,0 +1,10 @@
+.dot {
+	background: lightgreen;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+}
+
+md-card {
+  padding: 0px;
+}

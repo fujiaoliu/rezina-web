@@ -1,0 +1,50 @@
+<md-spinner *ngIf="!workers" class="app-spinner" color="warn"></md-spinner>
+
+<md-card *ngIf="workers">
+<md-toolbar color="accent">
+  Worker
+    <span class="fill-remaining-space"></span>
+    <span class="search-bar">
+      <md-icon>search</md-icon>
+    	<md-input #search placeholder="name"></md-input>
+    </span>
+    <!-- <span> -->
+      <!-- <button md-mini-fab color='warn' (click)="killWorker()"> <md-icon>power_settings_new</md-icon> </button> -->
+    <!-- </span> -->
+  </md-toolbar>
+	<md-card-content *ngIf="workers.status.length == 0">
+    <p>
+      No worker is running now.
+    </p>
+  </md-card-content>
+	<md-card-content *ngIf="workers.status.length !== 0">
+    <md-grid-list  cols="4" rowHeight="4:1" [style.background]="warn">
+      <md-grid-tile *ngFor="let wtitle of workerTitle" >{{wtitle|uppercase}}</md-grid-tile>
+    </md-grid-list>
+    <md-grid-list *ngFor="let worker of workers.status | filter: search.value" cols="4" rowHeight="5:1">
+      <md-grid-tile>
+        <button md-button (click)="gotoDetail(worker.ip)">{{worker.ip}}</button>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        {{worker.workload}}
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <span *ngIf="workers.offline_workers.indexOf(worker.ip) == -1" class="mdl-chip new-badge" [class.mdl-chip--contact]="workers.new_workers.indexOf(worker.ip) !== -1">
+          <span *ngIf="workers.new_workers.indexOf(worker.ip) !== -1" class="mdl-chip__contact mdl-color--teal mdl-color-text--white">N</span>
+          <span class="mdl-chip__text">RUNING</span>
+        </span>
+        <span *ngIf="workers.offline_workers.indexOf(worker.ip) !== -1" class="mdl-chip warn-badge">
+          <span class="mdl-chip__text">OFFLINE</span>
+        </span>
+      </md-grid-tile>
+
+      <md-grid-tile>
+        <button md-button color="warn"
+         [disabled]="workers.offline_workers.indexOf(worker.ip) !== -1"
+          (click)="killOneWorker(worker.ip)">Stop</button>
+      </md-grid-tile>
+    </md-grid-list>
+  </md-card-content>
+</md-card>

@@ -1,0 +1,79 @@
+app {
+	display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+md-sidenav-layout {
+	flex: 1;
+}
+
+md-sidenav {
+  width: 25%;
+}
+
+md-card {
+	margin: 20px;
+	overflow: scroll;
+}
+
+md-card-content {
+  padding: 16px;
+}
+
+md-card-content {
+	padding: 16px;
+}
+
+md-grid-tile {
+	overflow: scroll;
+}
+
+.mdl-chip.new-badge {
+	color: white;
+	background-color: #16c755
+}
+
+.mdl-chip.warn-badge {
+	color: white;
+	background-color: red
+}
+
+.mdl-data-table {
+	border-right: 0;
+	border-left: 0;
+	font-size: 14px;
+}
+
+.mdl-data-table th {
+	font-size: 16px;
+}
+
+md-spinner.app-spinner {
+    height: 30px;
+    margin: 100px auto;
+}
+
+.power-botton {
+    flex: 1;
+    -webkit-box-flex: 1;
+    text-align: right;
+}
+
+md-grid-list:hover {
+    background-color: rgba(0, 0, 0, 0.0588);
+}
+
+.fill-remaining-space  {
+  flex: 1 1 auto;
+}
+
+
+.search-bar {
+  width: 40%;
+  margin: auto;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  /*box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26)*/
+}

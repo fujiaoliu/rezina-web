@@ -1,0 +1,64 @@
+<md-spinner *ngIf="!typology" class="app-spinner"></md-spinner>
+
+<md-card *ngIf="typology">
+  <md-toolbar color="accent">
+    Typology
+    <span class="fill-remaining-space"></span>
+    <span class="search-bar">
+      <md-icon>search</md-icon>
+    	<md-input #search placeholder="name"></md-input>
+    </span>
+    <!-- <span> -->
+      <!-- <button  md-mini-fab color='warn'> <md-icon>power_settings_new</md-icon> </button> -->
+    <!-- </span> -->
+  </md-toolbar>
+
+	<md-card-content *ngIf="typology.typos.length == 0">
+    <p>
+      No typology is running now.
+    </p>
+  </md-card-content>
+
+	<md-card-content *ngIf="typology.typos.length > 0">
+    <md-grid-list cols="5" rowHeight="4:1" [style.background]="warn">
+      <md-grid-tile [style.color]="primary" *ngFor="let ttitle of typosTitle" >{{ttitle|uppercase}}</md-grid-tile>
+    </md-grid-list>
+
+    <md-grid-list *ngFor="let typo of typology.typos | filter: search.value" cols="5" rowHeight="5:1">
+      <md-grid-tile>
+        <button md-button (click)="gotoDetail(typo.name)">{{typo.name}}</button>
+      </md-grid-tile>
+      <md-grid-tile>
+        {{typo.start_name || 'Auto'}}
+      </md-grid-tile>
+      <md-grid-tile>
+        {{typo.interval}}s
+      </md-grid-tile>
+      <md-grid-tile>
+        <span class="mdl-chip new-badge" *ngIf="typology.runing_typos.indexOf(typo.name) !== -1">
+          <span class="mdl-chip__text">RUNING</span>
+        </span>
+        <span class="mdl-chip warn-badge" *ngIf="typology.runing_typos.indexOf(typo.name) == -1">
+          <span class="mdl-chip__text">STOPED</span>
+        </span>
+      </md-grid-tile>
+      <md-grid-tile>
+        <button md-icon-button color="warn" [md-menu-trigger-for]="menu">
+          <md-icon>more_vert</md-icon>
+        </button>
+        <md-menu #menu="mdMenu">
+          <button md-menu-item
+                 *ngIf="typology.runing_typos.indexOf(typo.name) == -1"
+                 (click)="typoAction(typo.name, 'start')"> Start</button>
+          <button md-menu-item
+           *ngIf="typology.runing_typos.indexOf(typo.name) !== -1"
+           (click)="typoAction(typo.name, 'stop')"> Stop</button>
+          <button md-menu-item (click)="typoAction(typo.name, 'restart')"> Restart</button>
+          <button md-menu-item (click)="typoAction(typo.name, 'remove')"> Remove</button>
+        </md-menu>
+      </md-grid-tile>
+    </md-grid-list>
+
+
+	</md-card-content>
+</md-card>

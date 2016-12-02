@@ -1,0 +1,50 @@
+<md-spinner  *ngIf="!worker" class="app-spinner" color="accent"></md-spinner>
+
+<md-card *ngIf="worker">
+  <md-toolbar color="accent">
+    Components runing on {{ip}}
+    <span class="fill-remaining-space"></span>
+    <div style="font-size: 14px;">
+    Time: {{worker.timestamp *1000 | date: 'y-MM-dd HH:mm:ss'}}
+    </div>
+  </md-toolbar>
+
+    <md-card-content *ngIf="worker.processes.length == 0">
+      <p>
+        No component is running now.
+      </p>
+    </md-card-content>
+
+  	<md-card-content *ngIf="worker.processes.length !== 0">
+      <md-grid-list  cols="4" rowHeight="5:1" [style.background]="warn">
+        <md-grid-tile *ngFor="let ptitle of procsTitle" >{{ptitle|uppercase}}</md-grid-tile>
+      </md-grid-list>
+
+      <md-grid-list *ngFor="let proc of worker.processes; let i = index" cols="4" rowHeight="5:1">
+        <md-grid-tile>
+					{{i}}
+        </md-grid-tile>
+
+        <md-grid-tile>
+          {{proc.split("#")[0]}}
+        </md-grid-tile>
+
+        <md-grid-tile>
+          {{proc.split("#")[1]}}
+        </md-grid-tile>
+
+        <md-grid-tile>
+          <span *ngIf="worker.offline_process.indexOf(proc) == -1" class="mdl-chip new-badge" [class.mdl-chip--contact]="worker.new_process.indexOf(proc) !== -1">
+            <span *ngIf="worker.new_process.indexOf(proc) !== -1" class="mdl-chip__contact mdl-color--teal mdl-color-text--white">N</span>
+            <span class="mdl-chip__text">RUNING</span>
+          </span>
+          <span *ngIf="worker.offline_process.indexOf(proc) !== -1" class="mdl-chip warn-badge">
+            <span class="mdl-chip__text">OFFLINE</span>
+          </span>
+        </md-grid-tile>
+      </md-grid-list>
+    </md-card-content>
+  <!-- <md-card-actions> -->
+        <!-- <button md-button (click)="goBack()">Back</button> -->
+   <!-- </md-card-actions> -->
+</md-card>

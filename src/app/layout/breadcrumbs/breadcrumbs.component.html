@@ -1,0 +1,9 @@
+<div class="breadcrumbs">
+  	<span  *ngFor="let partUri of router.url.split('/')" (click)="goto(partUri)">
+      <span *ngIf="partUri ==''"> Home </span>
+      <span class="breadcrumb" *ngIf="partUri !=''">
+        <md-icon>navigate_next</md-icon>
+        <span>{{partUri}}</span>
+      </span>
+    </span>
+</div>

@@ -1,0 +1,60 @@
+<md-spinner *ngIf="!master" class="app-spinner" color="accent"></md-spinner>
+
+<md-card *ngIf="master">
+    <md-toolbar color="accent">
+        <span>
+  Master
+  <div style="font-size: 14px;">
+   Time: {{master.timestamp * 1000 | date:'y-MM-dd HH:mm:ss'}}
+  </div>
+	</span>
+        <span class="fill-remaining-space"></span>
+        <!-- enable kill master botton after dailog implement. -->
+        <!-- <span> -->
+        <!-- <button md-mini-fab color='warn' (click)="killMaster()"> <md-icon>power_settings_new</md-icon> </button> -->
+        <!-- </span> -->
+        <button md-button *ngIf="isShow" (click)="isShow=false">Hide Settings</button>
+        <button md-button *ngIf="!isShow" (click)="toggleSettings()">Show Settings</button>
+
+    </md-toolbar>
+    <md-card-content>
+        <md-grid-list cols="4" rowHeight="5:1">
+            <md-grid-tile *ngFor="let mtitle of masterTitle">{{mtitle|uppercase}}</md-grid-tile>
+        </md-grid-list>
+        <md-grid-list *ngFor="let m of master.master_processes" cols="4" rowHeight="5:1">
+            <md-grid-tile> {{m.name.split("#")[0]}} </md-grid-tile>
+            <md-grid-tile> {{m.name.split("#")[1]}}</md-grid-tile>
+            <md-grid-tile>
+                <ul>
+                    <li *ngFor="let p_addr of m.addr">
+                        {{p_addr}}
+                    </li>
+                </ul>
+            </md-grid-tile>
+            <md-grid-tile>
+                <span class="mdl-chip new-badge" *ngIf="master.alive.indexOf(m.name.split('#')[1]) !== -1 ">
+          <span class="mdl-chip__text">RUNING</span>
+                </span>
+                <span class="mdl-chip warn-badge" *ngIf="master.alive.indexOf(m.name.split('#')[1]) == -1 ">
+          <span class="mdl-chip__text">STOPED</span>
+                </span>
+            </md-grid-tile>
+        </md-grid-list>
+    </md-card-content>
+</md-card>
+
+<md-card *ngIf="settings && isShow" style="width: 50%;">
+    <md-toolbar color="accent">
+        <span>
+    Startup Settings
+	</span>
+        <span class="fill-remaining-space"></span>
+    </md-toolbar>
+
+    <md-card-content>
+        <md-grid-list *ngFor="let k of settings | iterKeys" cols="2" rowHeight="8:1">
+            <md-grid-tile> {{k | uppercase}}</md-grid-tile>
+            <md-grid-tile> {{settings[k]}}</md-grid-tile>
+        </md-grid-list>
+    </md-card-content>
+</md-card>

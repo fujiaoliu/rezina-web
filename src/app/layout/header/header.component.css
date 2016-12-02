@@ -1,0 +1,62 @@
+.main-header {
+  margin: auto;
+  display: flex;
+  display: -webkit-flex;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26)
+}
+
+.menu-button {
+    width: 40px;
+    padding-left: 16px;
+    padding-right: 16px;
+    /*padding-bottom: 3px;*/
+}
+
+.search-button {
+    width: 40px;
+    padding-left: 16px;
+    /*padding-right: 10px;*/
+}
+
+.nav-button {
+    border-radius:0px;
+    line-height: 64px;
+    display: inline-block;
+    padding: 0 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 15px;
+    position: relative;
+    letter-spacing: 0.16px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+}
+
+.header-corner {
+    width: 60px;
+    text-align: center;
+}
+
+.lockup-brand {
+    font-family: 'Product Sans',Arial,Helvetica,sans-serif;
+    font-size: 22.4px;
+    position: relative;
+    color: rgba(0,0,0,0.54);
+}
+
+.lockup-brand a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-nav {
+    flex: 1;
+    -webkit-box-flex: 1;
+    text-align: right;
+}
+
+.header-nav>ul {
+    display: inline-flex;
+    flex-direction: row;
+    list-style-type: none;
+}

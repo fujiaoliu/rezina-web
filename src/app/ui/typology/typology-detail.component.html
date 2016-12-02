@@ -1,0 +1,57 @@
+<div class="search-bar">
+  <md-icon>search</md-icon>
+  <md-input  #search dividerColor="warn"> </md-input>
+</div>
+
+
+<md-spinner class="app-spinner" *ngIf="!typoDetail"></md-spinner>
+
+<div class="mdl-grid" *ngIf="typoDetail">
+  <div class="mdl-cell mdl-cell--4-col" *ngFor="let typoSetting of typoDetail.setting | filter: search.value" >
+    <md-card  (mouseover)="name=typoSetting.name" (mouseleave)="name='';value=1" >
+      <md-toolbar color='accent'>
+        {{typoSetting.name}}
+    <span class="fill-remaining-space"></span>
+
+    <span class="slider-bar" *ngIf="typoSetting.name.split('::')[1] !== 'Hydrant' && name==typoSetting.name && typoDetail.workers.length > 0">
+      <input class="mdl-slider mdl-js-slider" type="range"
+       min="1" max="32" tabindex="0" [(ngModel)] = 'value'>
+      {{value}}
+    </span>
+
+    <span *ngIf="typoSetting.name.split('::')[1] !== 'Hydrant' && name==typoSetting.name && typoDetail.workers.length > 0">
+      <button type="button" (click)="launchMore(typoSetting.name, value)" class="mdl-chip__action"><i class="material-icons">add_to_queue</i></button>
+    </span>
+    </md-toolbar>
+
+        <md-card-content>
+        <md-grid-list cols="2" rowHeight="4:1" *ngFor= "let key of typoSetting.udf | iterKeys">
+          <md-grid-tile>{{key | uppercase}}</md-grid-tile>
+          <md-grid-tile *ngIf="key !=='kwargs'">
+            <div>
+            {{ typoSetting.udf[key]}}
+          </div>
+         </md-grid-tile>
+          <md-grid-tile *ngIf="key =='kwargs'">
+            {{ typoSetting.udf[key] | json}}
+         </md-grid-tile>
+        </md-grid-list>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <div class="mdl-cell mdl-cell--4-col" *ngIf="typoDetail.workers.length > 0">
+  <md-card>
+  <md-toolbar color='warn'>
+  workers
+  </md-toolbar>
+  <md-card-content>
+    <md-grid-list cols="2" rowHeight="4:1"*ngFor="let w of typoDetail.workers">
+      <md-grid-tile>
+        {{w}}
+      </md-grid-tile>
+    </md-grid-list>
+  </md-card-content>
+</md-card>
+  </div>
+</div>

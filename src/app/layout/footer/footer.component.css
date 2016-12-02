@@ -1,0 +1,15 @@
+.rezina-footer {
+	background-color: #78909C;
+	color: white;
+  padding: 1rem;
+  /*text-align: center;*/
+	margin: auto;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.rezina-footer div {
+  margin: auto;
+}

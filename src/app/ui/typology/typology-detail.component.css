@@ -1,0 +1,57 @@
+md-card {
+  margin: 5px;
+  padding: 0;
+}
+
+md-grid-tile {
+	overflow: scroll;
+}
+
+md-grid-tile figure {
+  justify-content: flex-end;
+}
+
+md-toolbar {
+  font-size: 14px;
+}
+
+.search-bar {
+  width: 40%;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.26)
+}
+
+.add-more {
+  margin: 5px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+md-icon {
+  padding: 10px;
+}
+
+md-input {
+  width: 100%;
+}
+
+md-spinner.page-spinner {
+    margin: auto;
+}
+
+.slider-bar {
+  /*width: 40%;*/
+  margin: auto;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+}

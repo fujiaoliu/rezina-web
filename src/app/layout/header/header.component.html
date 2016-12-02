@@ -1,0 +1,65 @@
+<md-toolbar class="main-header" color="primary">
+  <!-- menu button with tooltip -->
+  <!-- <div id="menu" class="menu-button"> -->
+    <!-- <button md-icon-button (click)="leftnav.toggle()"> -->
+      <!-- <md-icon class="md-12">menu</md-icon> -->
+    <!-- </button> -->
+    <!-- tooltip -->
+    <!-- <div class="mdl-tooltip mdl-tooltip--right" data-mdl-for="menu"> -->
+    <!-- Toggle left menu -->
+    <!-- </div> -->
+  <!-- </div> -->
+
+  <!-- rezina logo  -->
+  <span class="lockup-brand">
+    <a href='/summary'>
+      Rezina
+    </a>
+  </span>
+  <!-- <img src="./Logomakr_2gKbpA.png" height="40px" width="100px"> -->
+
+  <!-- nav bar with links -->
+  <nav class="header-nav">
+    <ul class="header-nav-list" >
+      <li *ngFor="let link of links">
+      <div>
+         <button class="nav-button" md-button (click)="navigateTo(link)">{{ link }}</button>
+       </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- <div class="search-button">
+    <button md-icon-button>
+      <md-icon class="md-12">language</md-icon>
+    </button>
+  </div>
+
+  <div class="search-button">
+    <button md-icon-button>
+      <div class="material-icons mdl-badge mdl-badge--overlap" data-badge="100">notifications_active</div>
+    </button>
+  </div>
+ -->
+  <div class="search-button">
+    <button md-icon-button (click)="changeTheme()" id="togtheme">
+      <md-icon class="md-12"> format_color_fill </md-icon>
+    </button>
+    <!-- tooltip -->
+    <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="togtheme">
+      Change Theme
+    </div>
+
+  </div>
+  <!-- search button with tooltip -->
+  <!-- <div class="search-button" id="search"> -->
+    <!-- <button md-icon-button (click)="rightnav.toggle()"> -->
+      <!-- <md-icon class="md-12">search</md-icon> -->
+    <!-- </button> -->
+    <!-- tooltip -->
+    <!-- <div class="mdl-tooltip mdl-tooltip--left" data-mdl-for="search"> -->
+      <!-- Search everything -->
+    <!-- </div> -->
+  <!-- </div> -->
+
+</md-toolbar>

@@ -1,0 +1,52 @@
+{
+  "name": "rezina-web",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "serve": "webpack-dev-server --inline --progress --port 8000",
+    "build": "rimraf dist && webpack --config config/webpack.prod.js --progress --profile --bail",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cmd": "webpack --config config/webpack.prod.js --progress",
+    "postinstall": "typings install --registry=https://registry.npm.taobao.org",
+    "typings": "typings"
+  },
+  "author": "Fujiao Liu",
+  "license": "BSD",
+  "dependencies": {
+    "@angular/common": "2.0.0",
+    "@angular/compiler": "2.0.0",
+    "@angular/core": "2.0.0",
+    "@angular/forms": "2.0.0",
+    "@angular/http": "2.0.0",
+    "@angular/material": "^2.0.0-alpha.9-3",
+    "@angular/platform-browser": "2.0.0",
+    "@angular/platform-browser-dynamic": "2.0.0",
+    "@angular/router": "3.0.0",
+    "@types/hammerjs": "^2.0.33",
+    "core-js": "^2.4.1",
+    "hammerjs": "^2.0.8",
+    "material-design-icons": "^3.0.1",
+    "material-design-lite": "^1.2.1",
+    "reflect-metadata": "^0.1.8",
+    "rxjs": "5.0.0-beta.12",
+    "zone.js": "^0.6.23"
+  },
+  "devDependencies": {
+    "angular2-template-loader": "^0.4.0",
+    "awesome-typescript-loader": "^2.2.4",
+    "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.15.0",
+    "null-loader": "^0.1.1",
+    "phantomjs-prebuilt": "^2.1.7",
+    "raw-loader": "^0.5.1",
+    "rimraf": "^2.5.2",
+    "style-loader": "^0.13.1",
+    "typings": "^1.3.3",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1",
+    "webpack-merge": "^0.14.1"
+  }
+}

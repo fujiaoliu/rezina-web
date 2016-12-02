@@ -1,0 +1,17 @@
+.action-bar {
+    flex: 1;
+    -webkit-box-flex: 1;
+    display: inline;
+}
+
+md-card {
+    padding: 0px;
+}
+
+md-card-content {
+    padding: 16px;
+}
+
+ul {
+    list-style: none;
+}

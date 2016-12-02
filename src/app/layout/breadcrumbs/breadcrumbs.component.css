@@ -1,0 +1,27 @@
+.breadcrumbs{
+  margin: auto;
+  height: 64px;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+  /*color: #aaa;*/
+  margin-bottom: 20px;
+  padding-left: 20px;
+  background-color: rgba(236, 233, 233, 0.52);
+}
+
+.breadcrumbs span:hover {
+  color: #00b0ec;
+}
+
+.breadcrumbs span {
+  font-size: 18px;
+}
+.breadcrumb{
+  margin: auto;
+  display: flex;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  align-items: center;
+}
